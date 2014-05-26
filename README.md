@@ -18,4 +18,4 @@
 - I have considered that each line does not have white spaces at the begining / end of it.
 - See specifications for more documentation.
 
-Point your browser to http://localhost:8080/exercise to see it working!
+Point your browser to http://localhost:8080/battleship/exercise to see it working!
