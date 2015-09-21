@@ -32,7 +32,8 @@ The output for each ship should be its final coordinates and heading and if they
 
 Test Input:
 
-<pre>    (5, 5)
+<pre>    
+    (5, 5)
     (1, 2, N) (3, 3, E)
     (1, 2) LMLMLMLMM
     (2, 3)
@@ -48,9 +49,9 @@ Expected Output:
   </pre>
 
 ## Requisites
-- Java 1.7
-- Groovy 2.3.1
-- Gradle 1.10
+- Java 1.8
+- Groovy 2.4.4
+- Gradle 2.6
 - Preferred IDE/Text editor
 - Internet connection
 
