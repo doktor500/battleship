@@ -39,19 +39,19 @@ Test Input:
     (2, 3)
     (3, 3) MRMMRMRRM
     (1, 3)
-  </pre>
+ </pre>
 
 Expected Output:
 
 <pre>    
     (1, 3, N) SUNK
     (4, 1, E)
-  </pre>
+ </pre>
 
 ## Requisites
 - Java 1.8
 - Groovy 2.4.4
-- Gradle 2.6
+- Gradle 2.7
 - Preferred IDE/Text editor
 - Internet connection
 
