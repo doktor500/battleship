@@ -25,7 +25,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
 
     @Autowired private BattleShipController battleShipController
 
-    @Test()
+    @Test
     void 'returns expected game output'() {
         given:
         def modelMap = new ModelMap()
@@ -50,7 +50,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.output.trim() == format(output).trim()
     }
 
-    @Test()
+    @Test
     void 'returns every ship as sunk'() {
         given:
         def modelMap = new ModelMap()
@@ -78,7 +78,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.output.trim() == format(output).trim()
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid input data'() {
         given:
         def modelMap = new ModelMap()
@@ -91,7 +91,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.error == INVALID_GAME_INPUT_DATA
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid board data'() {
         given:
         def modelMap = new ModelMap()
@@ -130,7 +130,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.error == INVALID_BOARD
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid ship data'() {
         given:
         def modelMap = new ModelMap()
@@ -150,7 +150,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.error == INVALID_SHIP
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid ship operation data'() {
         given:
         def modelMap = new ModelMap()
@@ -170,7 +170,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.error == INVALID_SHIP_OPERATION
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid shot data'() {
         given:
         def modelMap = new ModelMap()
@@ -247,7 +247,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
         modelMap.error == INVALID_SHIP
     }
 
-    @Test()
+    @Test
     void 'returns an error when invalid turn data'() {
         given:
         def modelMap = new ModelMap()
