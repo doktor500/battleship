@@ -6,6 +6,8 @@ import com.intenthq.battleship.domain.Board
 import com.intenthq.battleship.domain.Game
 import spock.lang.Specification
 
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals
+
 class GameBuilderSpec extends Specification {
 
     def gameItemBuilder
@@ -28,6 +30,9 @@ class GameBuilderSpec extends Specification {
         1 * gameItemBuilder.createBoard(gameData.board, gameData.ships) >> board
         1 * gameItemBuilder.createShipOperationCommands(board, gameData.shipsOperations) >> [shipOperationCmd]
         1 * gameItemBuilder.createShotCommands(board, gameData.shots) >> [shotCmd]
-        currentGame == new Game(board: board, shipOperationCommands: [shipOperationCmd], shotCommands: [shotCmd])
+        assertReflectionEquals(
+            currentGame,
+            new Game(board: board, shipOperationCommands: [shipOperationCmd], shotCommands: [shotCmd])
+        )
     }
 }

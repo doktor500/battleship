@@ -25,6 +25,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator'
     compile 'org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE'
     compile 'org.objenesis:objenesis:2.2'
+    compile 'org.unitils:unitils-core:3.4.2'
 
     testCompile 'cglib:cglib-nodep:3.1'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'

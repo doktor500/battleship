@@ -1,8 +1,5 @@
 package com.intenthq.battleship.domain
 
-import groovy.transform.EqualsAndHashCode
-
-@EqualsAndHashCode
 class Dimension {
 
     Integer width

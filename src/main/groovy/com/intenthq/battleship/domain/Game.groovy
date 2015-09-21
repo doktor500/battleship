@@ -2,9 +2,7 @@ package com.intenthq.battleship.domain
 
 import com.intenthq.battleship.presenter.GamePresenter
 import com.intenthq.battleship.validators.GameValidator
-import groovy.transform.EqualsAndHashCode
 
-@EqualsAndHashCode
 class Game implements GameValidator, GamePresenter {
 
     Board board

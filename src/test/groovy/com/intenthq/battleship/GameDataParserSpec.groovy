@@ -3,6 +3,7 @@ package com.intenthq.battleship
 import spock.lang.Specification
 
 import static com.intenthq.Characters.NEW_LINE
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals
 
 class GameDataParserSpec extends Specification {
 
@@ -48,11 +49,11 @@ class GameDataParserSpec extends Specification {
         )
 
         when:
-        def gameData = gameDataParser.process(format(data))
+        def currentGameData = gameDataParser.process(format(data))
 
         then:
-        1 * gameDataValidator.validate(expectedGameData)
-        gameData == expectedGameData
+        1 * gameDataValidator.validate(_ as GameData)
+        assertReflectionEquals(currentGameData, expectedGameData)
     }
 
     private format(String text) {

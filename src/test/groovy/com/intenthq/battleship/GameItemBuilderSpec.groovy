@@ -8,6 +8,7 @@ import spock.lang.Specification
 import static com.intenthq.battleship.domain.Orientation.EAST
 import static com.intenthq.battleship.domain.Orientation.NORTH
 import static com.intenthq.battleship.domain.ShipOperation.*
+import static org.unitils.reflectionassert.ReflectionAssert.assertReflectionEquals
 
 class GameItemBuilderSpec extends Specification {
 
@@ -27,7 +28,7 @@ class GameItemBuilderSpec extends Specification {
         link(board, ships)
 
         expect:
-        gameItemBuilder.createBoard(boardLine, shipsLines) == board
+        assertReflectionEquals(gameItemBuilder.createBoard(boardLine, shipsLines), board)
     }
 
     void 'creates ship operation commands'() {
@@ -39,7 +40,10 @@ class GameItemBuilderSpec extends Specification {
         def secondShipOperation = createShipOperationCmd(board, secondCoordinate, MOVE, ROTATE_RIGHT)
 
         expect:
-        gameItemBuilder.createShipOperationCommands(board, shipOperationLines) == [firstShipOperation, secondShipOperation]
+        assertReflectionEquals(
+            gameItemBuilder.createShipOperationCommands(board, shipOperationLines),
+            [firstShipOperation, secondShipOperation]
+        )
     }
 
     void 'creates shot commands'() {
@@ -51,7 +55,7 @@ class GameItemBuilderSpec extends Specification {
         def secondShot = createShotCmd(board, secondCoordinate)
 
         expect:
-        gameItemBuilder.createShotCommands(board, shotLines) == [firstShot, secondShot]
+        assertReflectionEquals(gameItemBuilder.createShotCommands(board, shotLines), [firstShot, secondShot])
     }
 
     private createBoard(width, height) {

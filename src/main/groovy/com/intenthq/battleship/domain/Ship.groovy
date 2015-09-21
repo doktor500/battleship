@@ -4,10 +4,8 @@ import com.intenthq.battleship.presenter.ShipPresenter
 import com.intenthq.battleship.validators.ShipValidator
 import groovy.transform.EqualsAndHashCode
 
-@EqualsAndHashCode(includes = ['position'])
+@EqualsAndHashCode(includes = 'position')
 class Ship implements ShipValidator, ShipPresenter {
-
-    private static final SUNK = 'SUNK'
 
     @Delegate(includes = ['rotateLeft', 'rotateRight'])
     Position position
