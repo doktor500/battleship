@@ -3,19 +3,17 @@ package com.intenthq.battleship.domain
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 import static com.intenthq.battleship.domain.ShipOperation.*
 
 class ShipOperationSpec extends Specification {
 
-    Should 'return all ship operation symbols'() {
+    void 'returns all ship operation symbols'() {
         expect:
         ShipOperation.symbols == 'LRM'
     }
 
     @Unroll
-    Should 'return ship operation from a symbol'() {
+    void 'returns ship operation from a symbol'() {
         expect:
         ShipOperation.fromSymbol(symbol) == shipOperation
 
@@ -28,7 +26,7 @@ class ShipOperationSpec extends Specification {
     }
 
     @Unroll
-    Should 'return ship operation string value'() {
+    void 'returns ship operation string value'() {
         expect:
         shipOperation.toString() == shipOperationName
 

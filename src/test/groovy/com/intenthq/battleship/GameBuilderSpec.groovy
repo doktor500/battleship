@@ -6,14 +6,17 @@ import com.intenthq.battleship.domain.Board
 import com.intenthq.battleship.domain.Game
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 class GameBuilderSpec extends Specification {
 
-    def gameItemBuilder = Mock(GameItemBuilder)
-    def gameBuilder = new GameBuilder(gameItemBuilder: gameItemBuilder)
+    def gameItemBuilder
+    def gameBuilder
 
-    Should 'create a game instance'() {
+    void setup() {
+        gameItemBuilder = Mock(GameItemBuilder)
+        gameBuilder = new GameBuilder(gameItemBuilder: gameItemBuilder)
+    }
+
+    void 'creates a game instance'() {
         given:
         def gameData = Mock(GameData)
         def board = Mock(Board), shipOperationCmd = Mock(ShipOperationCmd), shotCmd = Mock(ShotCmd)

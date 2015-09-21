@@ -2,8 +2,6 @@ package com.intenthq.battleship
 
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 class GameDataValidatorSpec extends Specification {
 
     private static final VALID_DATA = 'Valid data'
@@ -17,12 +15,12 @@ class GameDataValidatorSpec extends Specification {
     def gameDataValidator
     def gameDataItemValidator
 
-    def setup() {
+    void setup() {
         gameDataItemValidator = Mock(GameDataItemValidator)
         gameDataValidator = new GameDataValidator(gameDataItemValidator: gameDataItemValidator)
     }
 
-    Should 'throw an invalid game data exception when there is an invalid board'() {
+    void 'throws an invalid game data exception when there is an invalid board'() {
         given:
         def board = VALID_DATA
         def gameData = new GameData(board: board)
@@ -38,7 +36,7 @@ class GameDataValidatorSpec extends Specification {
         exception.message == "$INVALID_BOARD 0"
     }
 
-    Should 'throw an invalid game data exception when there is an invalid ship'() {
+    void 'throws an invalid game data exception when there is an invalid ship'() {
         given:
         def board = VALID_DATA
         def ships = [VALID_DATA, IN_VALID_DATA]
@@ -57,7 +55,7 @@ class GameDataValidatorSpec extends Specification {
         exception.message == "$INVALID_SHIP 1"
     }
 
-    Should 'throw an invalid game data exception when there is an invalid ship operation'() {
+    void 'throws an invalid game data exception when there is an invalid ship operation'() {
         given:
         def board = VALID_DATA
         def ships = [VALID_DATA, VALID_DATA]
@@ -79,7 +77,7 @@ class GameDataValidatorSpec extends Specification {
         exception.message == "$INVALID_SHIP_OPERATION 1"
     }
 
-    Should 'throw an invalid game data exception when there is an invalid shoot'() {
+    void 'throws an invalid game data exception when there is an invalid shoot'() {
         given:
         def board = VALID_DATA
         def ships = [VALID_DATA, VALID_DATA]
@@ -104,7 +102,7 @@ class GameDataValidatorSpec extends Specification {
         exception.message == "$INVALID_SHOT 1"
     }
 
-    Should 'not thrown an invalid game data exception when game data is valid'() {
+    void 'does not thrown an invalid game data exception when game data is valid'() {
         given:
         def board = VALID_DATA
         def ships = [VALID_DATA, VALID_DATA]

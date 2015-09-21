@@ -2,8 +2,6 @@ package com.intenthq.battleship
 
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 import static com.intenthq.Characters.NEW_LINE
 
 class GameDataParserSpec extends Specification {
@@ -13,12 +11,12 @@ class GameDataParserSpec extends Specification {
     def gameDataParser
     def gameDataValidator
 
-    def setup() {
+    void setup() {
         gameDataValidator = Mock(GameDataValidator)
         gameDataParser = new GameDataParser(gameDataValidator: gameDataValidator)
     }
 
-    Should "throw an exception when data can't be parsed"() {
+    void "throws an exception when data can't be parsed"() {
         given:
         def data = ''
 
@@ -31,7 +29,7 @@ class GameDataParserSpec extends Specification {
         0 * _
     }
 
-    Should 'return a game data instance when valid game data can be parsed'() {
+    void 'returns a game data instance when valid game data can be parsed'() {
         given:
         def data = """
             (5, 5)

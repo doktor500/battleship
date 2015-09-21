@@ -3,19 +3,17 @@ package com.intenthq.battleship.domain
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 import static com.intenthq.battleship.domain.Orientation.*
 
 class OrientationSpec extends Specification {
 
-    Should 'return all orientation symbols'() {
+    void 'returns all orientation symbols'() {
         expect:
         Orientation.symbols == 'NESW'
     }
 
     @Unroll
-    Should 'return orientation from the corresponding symbol'() {
+    void 'returns orientation from the corresponding symbol'() {
         expect:
         Orientation.fromSymbol(symbol) == orientation
 
@@ -29,7 +27,7 @@ class OrientationSpec extends Specification {
     }
 
     @Unroll
-    Should 'return current orientation symbol'() {
+    void 'returns current orientation symbol'() {
         expect:
         orientation.toSymbol() == symbol
 
@@ -42,7 +40,7 @@ class OrientationSpec extends Specification {
     }
 
     @Unroll
-    Should 'rotate orientation to the left'() {
+    void 'rotates orientation to the left'() {
         expect:
         orientation.rotateLeft() == rotatedOrientation
 
@@ -55,7 +53,7 @@ class OrientationSpec extends Specification {
     }
 
     @Unroll
-    Should 'rotate orientation to the right'() {
+    void 'rotates orientation to the right'() {
         expect:
         orientation.rotateRight() == rotatedOrientation
 
@@ -68,7 +66,7 @@ class OrientationSpec extends Specification {
     }
 
     @Unroll
-    Should 'return if orientation is horizontal'() {
+    void 'returns if orientation is horizontal'() {
         expect:
         orientation.horizontal == isHorizontal
 
@@ -81,7 +79,7 @@ class OrientationSpec extends Specification {
     }
 
     @Unroll
-    Should 'return orientation string value'() {
+    void 'returns orientation string value'() {
         expect:
         orientation.toString() == orientationName
 

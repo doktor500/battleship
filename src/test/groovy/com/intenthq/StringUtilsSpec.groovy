@@ -3,12 +3,10 @@ package com.intenthq
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 class StringUtilsSpec extends Specification {
 
     @Unroll
-    Should 'camelize a string'() {
+    void 'camelizes a string'() {
         expect:
         StringUtils.camelize(text) == textCamelized
 

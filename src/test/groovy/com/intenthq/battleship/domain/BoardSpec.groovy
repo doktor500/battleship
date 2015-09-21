@@ -2,8 +2,6 @@ package com.intenthq.battleship.domain
 
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 import static com.intenthq.Characters.NEW_LINE
 import static com.intenthq.battleship.domain.Orientation.EAST
 import static com.intenthq.battleship.domain.Orientation.NORTH
@@ -15,11 +13,11 @@ class BoardSpec extends Specification {
 
     Board board
 
-    def setup() {
+    void setup() {
         board = new Board()
     }
 
-    Should 'mark ship as sunk if ship is found when executing a shoot'() {
+    void 'marks ship as sunk if ship is found when executing a shoot'() {
         given:
         def (ship1, ship2, ship3) = [Mock(Ship), Mock(Ship), Mock(Ship)]
         def coordinate = Mock(Coordinate)
@@ -38,7 +36,7 @@ class BoardSpec extends Specification {
         0 * _
     }
 
-    Should 'not mark any ship as sunk if no ship is found when executing a shoot'() {
+    void 'does not mark any ship as sunk if no ship is found when executing a shoot'() {
         given:
         def (ship1, ship2, ship3) = [Mock(Ship), Mock(Ship), Mock(Ship)]
         def coordinate = Mock(Coordinate)
@@ -56,7 +54,7 @@ class BoardSpec extends Specification {
         0 * _
     }
 
-    Should 'find a ship by its coordinate'() {
+    void 'finds a ship by its coordinate'() {
         given:
         def (coordinate1, coordinate2, coordinate3) = [new Coordinate(0, 0), new Coordinate(1, 3), new Coordinate(5, 3)]
         def (ship1, ship2, ship3) = [ship(coordinate1), ship(coordinate2), ship(coordinate3)]
@@ -68,7 +66,7 @@ class BoardSpec extends Specification {
         board.findShip(coordinate3) == ship3
     }
 
-    Should 'throw an invalid game exception if a ship is not found'() {
+    void 'throws an invalid game exception if a ship is not found'() {
         given:
         def coordinate = Mock(Coordinate)
         def ship = Mock(Ship)
@@ -83,7 +81,7 @@ class BoardSpec extends Specification {
         exception.message == SHIP_NOT_FOUND
     }
 
-    Should 'return board dimensions'() {
+    void 'returns board dimensions'() {
         given:
         def (boardWidth, boardHeight) = [3, 5]
         board.dimension = new Dimension(boardWidth, boardHeight)
@@ -93,7 +91,7 @@ class BoardSpec extends Specification {
         board.height == boardHeight
     }
 
-    Should 'return ships status'() {
+    void 'returns ships status'() {
         given:
         def (firstShip, secondShip) = [ship(new Coordinate(0, 0), NORTH, false), ship(new Coordinate(1, 2), EAST, true)]
         def board = new Board(ships: [firstShip, secondShip])
@@ -102,7 +100,7 @@ class BoardSpec extends Specification {
         board.format() == '(0, 0, N) ' + NEW_LINE + '(1, 2, E) SUNK'
     }
 
-    Should 'return if the board is valid'() {
+    void 'returns if the board is valid'() {
         given:
         def board = new Board(dimension: new Dimension(1, 2))
 
@@ -110,7 +108,7 @@ class BoardSpec extends Specification {
         board.validate()
     }
 
-    Should 'throw an invalid game exception if there are ships at the same position'() {
+    void 'throws an invalid game exception if there are ships at the same position'() {
         given:
         def (ship1, ship2) = [ship(new Coordinate(2, 2)), ship(new Coordinate(2, 2))]
         def board = new Board(dimension: new Dimension(2, 5), ships: [ship1, ship2])

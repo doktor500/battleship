@@ -3,8 +3,6 @@ package com.intenthq.battleship.domain
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 import static com.intenthq.battleship.domain.Orientation.EAST
 import static com.intenthq.battleship.domain.Orientation.NORTH
 
@@ -14,11 +12,11 @@ class ShipSpec extends Specification {
 
     def ship
 
-    def setup() {
+    void setup() {
         ship = new Ship()
     }
 
-    Should 'return if the ship is at a certain coordinate'() {
+    void 'returns if the ship is at a certain coordinate'() {
         given:
         def coordinate = new Coordinate(0, 0)
         def position = new Position(coordinate: coordinate)
@@ -29,7 +27,7 @@ class ShipSpec extends Specification {
         !ship.isAt(new Coordinate(0, 1))
     }
 
-    Should 'mark a ship as sunk'() {
+    void 'marks a ship as sunk'() {
         expect:
         !ship.sunk
 
@@ -40,7 +38,7 @@ class ShipSpec extends Specification {
         ship.sunk
     }
 
-    Should 'rotate ship to left'() {
+    void 'rotates ship to left'() {
         given:
         def position = Mock(Position)
         ship.position = position
@@ -52,7 +50,7 @@ class ShipSpec extends Specification {
         1 * position.rotateLeft()
     }
 
-    Should 'rotate ship to right'() {
+    void 'rotates ship to right'() {
         given:
         def position = Mock(Position)
         ship.position = position
@@ -64,7 +62,7 @@ class ShipSpec extends Specification {
         1 * position.rotateRight()
     }
 
-    Should 'moves ship to next position'() {
+    void 'moves ship to next position'() {
         given:
         def dimension = Mock(Dimension)
         def position = Mock(Position)
@@ -81,7 +79,7 @@ class ShipSpec extends Specification {
     }
 
     @Unroll
-    Should 'return ship string value'() {
+    void 'returns ship string value'() {
         expect:
         ship.format() == stringValue
 
@@ -92,7 +90,7 @@ class ShipSpec extends Specification {
         ship(new Coordinate(3, 3), EAST, true)   | '(3, 3, E) SUNK'
     }
 
-    Should 'validate if the ship is located inside the board'() {
+    void 'validates if the ship is located inside the board'() {
         given:
         def board = new Board(dimension: new Dimension(5, 5))
         def ship = new Ship(board: board, position: new Position(coordinate: new Coordinate(3, 3)))
@@ -101,7 +99,7 @@ class ShipSpec extends Specification {
         ship.validate()
     }
 
-    Should 'throw an invalid game exception if the ship is located outside the board'() {
+    void 'throws an invalid game exception if the ship is located outside the board'() {
         given:
         def board = new Board(dimension: new Dimension(3, 3))
         def ship = new Ship(board: board, position: new Position(coordinate: new Coordinate(5, 5)))

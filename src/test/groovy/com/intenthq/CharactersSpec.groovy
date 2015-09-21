@@ -2,11 +2,9 @@ package com.intenthq
 
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 class CharactersSpec extends Specification {
 
-    Should 'return delimiter characters'() {
+    void 'returns delimiter characters'() {
         expect:
         Characters.delimiters == '(,)'
     }

@@ -9,24 +9,27 @@ import com.intenthq.battleship.domain.InvalidGameException
 import org.springframework.ui.ModelMap
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 class BattleShipControllerSpec extends Specification {
 
     private static final EXERCISE_VIEW = 'exercise'
     private static final BATTLESHIP_VIEW = 'battleship'
 
-    def gameDataParser = Mock(GameDataParser)
-    def gameBuilder = Mock(GameBuilder)
+    def gameDataParser
+    def gameBuilder
+    def battleShipController
 
-    def battleShipController = new BattleShipController(gameDataParser: gameDataParser, gameBuilder: gameBuilder)
+    void setup() {
+        gameDataParser = Mock(GameDataParser)
+        gameBuilder = Mock(GameBuilder)
+        battleShipController = new BattleShipController(gameDataParser: gameDataParser, gameBuilder: gameBuilder)
+    }
 
-    Should 'return battleship view'() {
+    void 'returns battleship view'() {
         expect:
         battleShipController.battleship() == BATTLESHIP_VIEW
     }
 
-    Should 'return game execution result'() {
+    void 'returns game execution result'() {
         given:
         def (input, output) = ['valid game input data', 'game result']
         def gameData = Mock(GameData)
@@ -46,7 +49,7 @@ class BattleShipControllerSpec extends Specification {
         view == EXERCISE_VIEW
     }
 
-    Should 'return exercise view when there is no input data'() {
+    void 'returns exercise view when there is no input data'() {
         given:
         def input = ''
         def model = Mock(ModelMap)
@@ -59,7 +62,7 @@ class BattleShipControllerSpec extends Specification {
         view == EXERCISE_VIEW
     }
 
-    Should 'return the exception message if an invalid game data exception occurs'() {
+    void 'returns the exception message if an invalid game data exception occurs'() {
         given:
         def (input, exceptionMessage) = ['invalid game input data', 'error occurred']
         def model = Mock(ModelMap)
@@ -72,7 +75,7 @@ class BattleShipControllerSpec extends Specification {
         1 * model.addAttribute('error', exceptionMessage)
     }
 
-    Should 'return the exception message if an invalid game exception occurs'() {
+    void 'returns the exception message if an invalid game exception occurs'() {
         given:
         def gameData = Mock(GameData)
         def game = Mock(Game)

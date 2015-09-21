@@ -4,11 +4,9 @@ import com.intenthq.battleship.domain.Board
 import com.intenthq.battleship.domain.Coordinate
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 class ShotCmdSpec extends Specification {
 
-    Should 'execute a shot on the board'() {
+    void 'executes a shot on the board'() {
         given:
         def board = Mock(Board)
         def coordinate = Mock(Coordinate)

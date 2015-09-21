@@ -9,12 +9,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 import org.springframework.ui.ModelMap
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 import static com.intenthq.Characters.NEW_LINE
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@RunWith(SpringJUnit4ClassRunner)
+@SpringApplicationConfiguration(classes = Application)
 class BattleShipControllerIntegrationSpec extends Specification {
 
     private static final INVALID_GAME_INPUT_DATA = 'Invalid game input data'
@@ -25,11 +23,10 @@ class BattleShipControllerIntegrationSpec extends Specification {
     private static final INVALID_SHIP_COORDINATES = 'The ship must have a coordinate inside the board'
     private static final INVALID_SHOT = 'Invalid shot format at shot 1'
 
-    @Autowired
-    private BattleShipController battleShipController
+    @Autowired private BattleShipController battleShipController
 
     @Test()
-    Should 'return expected game output'() {
+    void 'returns expected game output'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -54,7 +51,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return mar every ship as sunk'() {
+    void 'returns every ship as sunk'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -82,7 +79,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid input data'() {
+    void 'returns an error when invalid input data'() {
         given:
         def modelMap = new ModelMap()
         def input = '---'
@@ -95,7 +92,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid board data'() {
+    void 'returns an error when invalid board data'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -115,7 +112,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test
-    Should 'return an error when board dimension is invalid'() {
+    void 'returns an error when board dimension is invalid'() {
         def modelMap = new ModelMap()
         def input = """
             (-1, 5)
@@ -134,7 +131,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid ship data'() {
+    void 'returns an error when invalid ship data'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -154,7 +151,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid ship operation data'() {
+    void 'returns an error when invalid ship operation data'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -174,7 +171,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid shot data'() {
+    void 'returns an error when invalid shot data'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -194,7 +191,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test
-    Should 'return an error when there are ships on the same position'() {
+    void 'returns an error when there are ships on the same position'() {
         def modelMap = new ModelMap()
         def input = """
             (5, 5)
@@ -213,7 +210,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test
-    Should 'return an error when there are ships out of the board'() {
+    void 'returns an error when there are ships out of the board'() {
         def modelMap = new ModelMap()
         def input = """
             (5, 5)
@@ -232,7 +229,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test
-    Should 'return an error because ship movement does not reference a ship'() {
+    void 'returns an error because ship movement does not reference a ship'() {
         def modelMap = new ModelMap()
         def input = """
             (5, 5)
@@ -251,7 +248,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test()
-    Should 'return an error when invalid turn data'() {
+    void 'returns an error when invalid turn data'() {
         given:
         def modelMap = new ModelMap()
         def input = """
@@ -270,7 +267,7 @@ class BattleShipControllerIntegrationSpec extends Specification {
     }
 
     @Test
-    Should 'return an error because a ship is in the same position as other after it moves'() {
+    void 'returns an error because a ship is in the same position as other after it moves'() {
         def modelMap = new ModelMap()
         def input = """
             (5, 5)

@@ -3,13 +3,11 @@ package com.intenthq.battleship.domain
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 import static com.intenthq.battleship.domain.Orientation.*
 
 class PositionSpec extends Specification {
 
-    Should 'rotate current position to left'() {
+    void 'rotates current position to left'() {
         given:
         def position = new Position(orientation: NORTH)
 
@@ -20,7 +18,7 @@ class PositionSpec extends Specification {
         position.orientation == WEST
     }
 
-    Should 'rotate current position to right'() {
+    void 'rotates current position to right'() {
         given:
         def position = new Position(orientation: NORTH)
 
@@ -31,7 +29,7 @@ class PositionSpec extends Specification {
         position.orientation == EAST
     }
 
-    Should 'return X axis coordinate'() {
+    void 'returns X axis coordinate'() {
         given:
         def (x, y) = [2, 3]
         def position = new Position(coordinate: new Coordinate(x, y))
@@ -40,7 +38,7 @@ class PositionSpec extends Specification {
         position.x == x
     }
 
-    Should 'return Y axis coordinate'() {
+    void 'returns Y axis coordinate'() {
         given:
         def (x, y) = [2, 3]
         def position = new Position(coordinate: new Coordinate(x, y))
@@ -49,7 +47,7 @@ class PositionSpec extends Specification {
         position.y == y
     }
 
-    Should 'sets next north coordinate'() {
+    void 'sets next north coordinate'() {
         given:
         def (width, height) = [3, 5]
         def dimension = new Dimension(width, height)
@@ -65,7 +63,7 @@ class PositionSpec extends Specification {
         position.coordinate == nextCoordinate
     }
 
-    Should 'sets next south coordinate'() {
+    void 'sets next south coordinate'() {
         given:
         def (width, height) = [3, 5]
         def dimension = new Dimension(width, height)
@@ -81,7 +79,7 @@ class PositionSpec extends Specification {
         position.coordinate == nextCoordinate
     }
 
-    Should 'sets next east coordinate'() {
+    void 'sets next east coordinate'() {
         given:
         def (width, height) = [3, 5]
         def dimension = new Dimension(width, height)
@@ -97,7 +95,7 @@ class PositionSpec extends Specification {
         position.coordinate == nextCoordinate
     }
 
-    Should 'sets next west coordinate'() {
+    void 'sets next west coordinate'() {
         given:
         def (width, height) = [3, 5]
         def dimension = new Dimension(width, height)
@@ -114,7 +112,7 @@ class PositionSpec extends Specification {
     }
 
     @Unroll
-    Should 'return next position'() {
+    void 'returns next position'() {
         given:
         def (width, height) = [3, 5]
         def dimension = new Dimension(width, height)

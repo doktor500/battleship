@@ -3,14 +3,12 @@ package com.intenthq
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 import static com.intenthq.utils.VerbalExpression.regex
 
 class PatternMatcherSpec extends Specification {
 
     @Unroll
-    Should 'return every match found'() {
+    void 'returns every match found'() {
         expect:
         PatternMatcher.findAll(digitRegEx, text) == numbers
 

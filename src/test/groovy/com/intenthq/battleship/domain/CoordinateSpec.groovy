@@ -3,12 +3,10 @@ package com.intenthq.battleship.domain
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 class CoordinateSpec extends Specification {
 
     @Unroll
-    Should 'return next north coordinate generating a cycle when barrier is reach'() {
+    void 'returns next north coordinate generating a cycle when barrier is reach'() {
         given:
         def (x, y) = currentCoordinate
         def (nextX, nextY) = nextCoordinate
@@ -25,7 +23,7 @@ class CoordinateSpec extends Specification {
     }
 
     @Unroll
-    Should 'return next south coordinate generating a cycle when barrier is reach'() {
+    void 'returns next south coordinate generating a cycle when barrier is reach'() {
         given:
         def (x, y) = currentCoordinate
         def (nextX, nextY) = nextCoordinate
@@ -42,7 +40,7 @@ class CoordinateSpec extends Specification {
     }
 
     @Unroll
-    Should 'return next east coordinate generating a cycle when barrier is reach'() {
+    void 'returns next east coordinate generating a cycle when barrier is reach'() {
         given:
         def (x, y) = currentCoordinate
         def (nextX, nextY) = nextCoordinate
@@ -59,7 +57,7 @@ class CoordinateSpec extends Specification {
     }
 
     @Unroll
-    Should 'return next west coordinate generating a cycle when barrier is reach'() {
+    void 'returns next west coordinate generating a cycle when barrier is reach'() {
         given:
         def (x, y) = currentCoordinate
         def (nextX, nextY) = nextCoordinate

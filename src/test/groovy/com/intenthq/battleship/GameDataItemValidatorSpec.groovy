@@ -3,14 +3,16 @@ package com.intenthq.battleship
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import java.lang.Void as Should
-
 class GameDataItemValidatorSpec extends Specification {
 
-    def gameDataItemValidator = new GameDataItemValidator()
+    def gameDataItemValidator
+
+    void setup() {
+        gameDataItemValidator = new GameDataItemValidator()
+    }
 
     @Unroll
-    Should 'return if a coordinate can be parsed'() {
+    void 'returns if a coordinate can be parsed'() {
         expect:
         gameDataItemValidator.isValidCoordinate(input) == isValid
 
@@ -28,7 +30,7 @@ class GameDataItemValidatorSpec extends Specification {
     }
 
     @Unroll
-    Should 'return if a boat can be parsed'() {
+    void 'returns if a boat can be parsed'() {
         expect:
         gameDataItemValidator.isValidShip(input) == isValid
 
@@ -54,7 +56,7 @@ class GameDataItemValidatorSpec extends Specification {
     }
 
     @Unroll
-    Should 'return if a movement can be parsed'() {
+    void 'returns if a movement can be parsed'() {
         expect:
         gameDataItemValidator.isValidShipOperation(input) == isValid
 

@@ -5,17 +5,19 @@ import com.intenthq.battleship.command.ShotCmd
 import com.intenthq.battleship.domain.*
 import spock.lang.Specification
 
-import java.lang.Void as Should
-
 import static com.intenthq.battleship.domain.Orientation.EAST
 import static com.intenthq.battleship.domain.Orientation.NORTH
 import static com.intenthq.battleship.domain.ShipOperation.*
 
 class GameItemBuilderSpec extends Specification {
 
-    def gameItemBuilder = new GameItemBuilder()
+    def gameItemBuilder
 
-    Should 'create game board'() {
+    void setup() {
+        gameItemBuilder = new GameItemBuilder()
+    }
+
+    void 'creates game board'() {
         given:
         def boardLine = '(5, 5)'
         def shipsLines = ['(1, 2, N)', '(3, 3, E)']
@@ -28,7 +30,7 @@ class GameItemBuilderSpec extends Specification {
         gameItemBuilder.createBoard(boardLine, shipsLines) == board
     }
 
-    Should 'create ship operation commands'() {
+    void 'creates ship operation commands'() {
         given:
         def board = new Board()
         def shipOperationLines = ['(1, 2) LM', '(3, 3) MR']
@@ -40,7 +42,7 @@ class GameItemBuilderSpec extends Specification {
         gameItemBuilder.createShipOperationCommands(board, shipOperationLines) == [firstShipOperation, secondShipOperation]
     }
 
-    Should 'create shot commands'() {
+    void 'creates shot commands'() {
         given:
         def board = new Board()
         def shotLines = ['(1, 2)', '(3, 3)']
